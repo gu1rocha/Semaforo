@@ -1,0 +1,157 @@
+/*.bg{
+    position: relative;
+    background-image: url(/assets/img/bg.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    animation: animate 15s linear infinite;
+}*/
+
+:root{
+ --playStop : running;
+}
+
+.spot{
+    --playStop : paused;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eaeaf0;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bg{
+    position: relative;
+    display: flex;
+    width: 350px;
+    height: 250px;
+    background-color: #eaeaf0;
+    border-radius: 20px;
+    box-shadow: -10px -10px 15px rgba(255, 255, 255, .9), 8px 8px 9px rgba(0, 0, 0, .5);
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sun{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #ffff5b, 0 0 60px #ffff5b, 0 0 80px #ffff5b, 0 0 100px #ffff5b;
+}
+
+.road{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #333;
+}
+
+.road::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: #0d9e0d;
+}
+
+.road::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 50%, white 50%, white 100%);
+    background-size: 20px;
+    animation: animateRoad 2s linear infinite;
+    animation-play-state: var(--playStop);
+}
+
+span{
+    position: absolute;
+    color: white;
+}
+
+span.car{
+    bottom: 15px;
+    left: 20px;
+    font-size: 7em !important;
+    -webkit-text-stroke: 2px #000;
+    z-index: 10;
+    animation: car .3s linear infinite;
+    animation-play-state: var(--playStop);
+}
+
+span.cloud{
+    position: absolute;
+    top: calc(15px * var(--i));
+    left: calc(15px * var(--i));
+    font-size: 6em !important;
+    -webkit-text-stroke: 2px #000;
+    z-index: 1;
+    animation: animateCloud 3.5s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+    animation-play-state: var(--playStop);
+}
+
+span.tree{
+    position: absolute;
+    color: #0d9e0d;
+    bottom: 50px;
+    font-size: 6em !important;
+    z-index: 2;
+    animation: animateCloud 7s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+    animation-play-state: var(--playStop);
+}
+
+span.mountain{
+    position: absolute;
+    color: #8b3c23;
+    bottom: 18px;
+    font-size: 12em !important;
+    animation: animateCloud 15s linear infinite;
+    animation-delay: calc(-4s * var(--i));
+    animation-play-state: var(--playStop);
+}
+
+@keyframes animateRoad {
+    from{
+        background-position-x: 0;
+    }
+    to{
+        background-position-x: -100%;
+    }
+}
+
+@keyframes car {
+    0%,100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(1px);
+    }
+}
+
+@keyframes animateCloud {
+    0%{
+        transform: translateX(350px);
+    }
+    100%{
+        transform: translateX(-350px);
+    }
+}
