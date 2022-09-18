@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BE">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,14 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/script.js" defer></script>
 </head>
-<body>
+<body class="stop">
+    <div class="container game">
+        <div class="semaforo">
+            <span class="luces-circulo red" color = "red"></span>
+            <span class="luces-circulo yellow" color="yellow"></span>
+            <span class="luces-circulo green" color="green"></span>
+        </div>
+    </div>
     <div class="bg">
         <div class="sun"></div>
         <div class="road"></div>
@@ -54,7 +61,20 @@
             <span style="--i:5"></span>
         </div>
     </div>
-    <input type="checkbox" id="playStop">
-    <label for="playStop"></label>
+    <div class="boxInputs">
+        <label for="playStop"><span class="material-symbols-sharp">play_arrow</span><input type="checkbox" id="playStop"></label>
+        <span class="material-symbols-sharp replay">replay</span>
+    </div>
+    <div class="boxInit">
+        <div class="container">
+            <div class="semaforo">
+                <span class="luces-circulo red" color = "red"></span>
+                <span class="luces-circulo yellow" color="yellow"></span>
+                <span class="luces-circulo green" color="green"></span>
+            </div>
+        </div>
+    </div>
+    <audio src="./assets/music/certo.mp3" id="certo"></audio>
+    <audio src="./assets/music/errado.mp3" id="errado"></audio>
 </body>
 </html>

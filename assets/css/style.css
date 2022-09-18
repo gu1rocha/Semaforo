@@ -24,83 +24,118 @@ html {
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #eaeaf0;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eaeaf0;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.container{
+  display: grid;
+  place-items: center;
+}
+
+.semaforo{
+  width: 100px;
+  height: 200px;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  background-color: #2c3e50;
+  padding: 10px;
+}
+
+.luces-circulo{
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgb(0, 0,0,0.3);
+  position: relative;
+  cursor: pointer;
+}
+
+.luces-circulo::after{
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-right: 4px solid rgb(255, 255,255,0.6);
+  top: 5%;
 }
 
 .bg{
-    position: relative;
-    display: flex;
-    width: 350px;
-    height: 250px;
-    background-color: #eaeaf0;
-    border-radius: 20px;
-    box-shadow: -10px -10px 15px rgba(255, 255, 255, .9), 8px 8px 9px rgba(0, 0, 0, .5);
-    border: 1px solid white;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  width: 350px;
+  height: 250px;
+  background-color: #eaeaf0;
+  border-radius: 20px;
+  box-shadow: -10px -10px 15px rgba(255, 255, 255, .9), 8px 8px 9px rgba(0, 0, 0, .5);
+  border: 1px solid white;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .sun{
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 0 40px #ffff5b, 0 0 60px #ffff5b, 0 0 80px #ffff5b, 0 0 100px #ffff5b;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #ffff5b, 0 0 60px #ffff5b, 0 0 80px #ffff5b, 0 0 100px #ffff5b;
 }
 
 .road{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #333;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #333;
 }
 
 .road::before{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 10px;
-    background-color: #0d9e0d;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background-color: #0d9e0d;
 }
 
 .road::after{
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 2px;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 50%, white 50%, white 100%);
-    background-size: 20px;
-    animation: animateRoad 2s linear infinite;
-    animation-play-state: var(--playStop);
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent 50%, white 50%, white 100%);
+  background-size: 20px;
+  animation: animateRoad 2s linear infinite;
+  animation-play-state: var(--playStop);
 }
 
 span{
-    position: absolute;
-    color: white;
+  position: absolute;
+  color: white;
 }
 
 span.car{
-    bottom: 13px;
-    left: 20px;
-    font-size: 7em !important;
-    -webkit-text-stroke: 2px #000;
-    z-index: 10;
-    animation: car .3s linear infinite;
-    animation-play-state: var(--playStop);
+  bottom: 13px;
+  left: 20px;
+  font-size: 7em !important;
+  -webkit-text-stroke: 2px #000;
+  z-index: 10;
+  animation: car .3s linear infinite;
+  animation-play-state: var(--playStop);
 }
 
 span.people{
@@ -160,30 +195,6 @@ span.cor{
   animation: animateCloud 3.5s linear infinite;
   animation-delay: calc(-1s * var(2));
   animation-play-state: var(--playStop);
-  background-color: yellow;
-}
-
-span.cor.yellow{
-  bottom: 105px;
-  background-color: yellow;
-}
-
-span.cor.green{
-  bottom: 116px;
-  background-color: green;
-}
-
-span.cor.red{
-  bottom: 94px;
-  background: rgb(243,197,189); 
-background: -moz-radial-gradient(center, ellipse cover, rgba(243,197,189,1) 0%, rgba(232,108,87,1) 50%, rgba(234,40,3,1) 51%, rgba(255,102,0,1) 75%, rgba(199,34,0,1) 100%);
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(243,197,189,1)), color-stop(50%,rgba(232,108,87,1)), color-stop(51%,rgba(234,40,3,1)), color-stop(75%,rgba(255,102,0,1)), color-stop(100%,rgba(199,34,0,1)));
-background: -webkit-radial-gradient(center, ellipse cover, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 50%,rgba(234,40,3,1) 51%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%); 
-background: -o-radial-gradient(center, ellipse cover, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 50%,rgba(234,40,3,1) 51%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);
-background: -ms-radial-gradient(center, ellipse cover, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 50%,rgba(234,40,3,1) 51%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);
-background: radial-gradient(ellipse at center, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 50%,rgba(234,40,3,1) 51%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#c72200',GradientType=1 );
-
 }
 
 span.cloud{
@@ -250,7 +261,13 @@ input {
   display: none;
 }
 
-label {
+.boxInputs{
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+.boxInputs span{
   cursor: pointer;
   width: 80px;
   height: 80px;
@@ -262,17 +279,67 @@ label {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: aqua;
+  position: relative;
+  -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+.boxInputs span.stop{
+  background-color: red;
+}
+
+.boxInputs span.play{
+  background-color: green;
+}
+
+.boxInputs span.replay{
+  background-color: blue;
+  clip-path: none;
 }
 
 label:hover{
   box-shadow: none;
 }
 
-input:checked+label::after {
-  content: '►';
+.boxInit{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(255, 255, 255, .8);
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-label::after {
-  content: '❙❙';
+span.cor.red{
+  bottom: 116px;
+}
+
+span.cor.yellow{
+  bottom: 105px;
+}
+
+span.cor.green{
+  bottom: 94px;
+}
+
+.red{
+  background-color: #c0392b;
+}
+.yellow{
+  background-color: #f1c40f;
+}
+.green{
+  background-color: #2ecc71;
+}
+
+.red.active{
+  box-shadow: 0 0 10px 1px #c0392b;
+}
+.yellow.active{
+  box-shadow: 0 0 10px 1px #f1c40f;
+}
+.green.active{
+  box-shadow: 0 0 10px 1px #2ecc71;
 }
